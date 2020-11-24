@@ -13,6 +13,7 @@ class MessagesController < ApplicationController
   def destroy
     message = Message.find_by(id: params[:id])
     message.destroy
+    render json: {notice: 'message destroyed'}, status: 200
   end 
 
   private 
