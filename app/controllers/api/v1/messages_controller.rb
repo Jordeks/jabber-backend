@@ -23,7 +23,7 @@ class Api::V1::MessagesController < ApplicationController
       render json: @message, status: 200
     else
       error_resp = {
-        error: @trip.errors.full_messages.to_sentence
+        error: @message.errors.full_messages.to_sentence
       }
       render json: error_resp, status: :unprocessable_entity
     end
