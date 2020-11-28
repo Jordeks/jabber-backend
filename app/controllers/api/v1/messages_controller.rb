@@ -7,7 +7,7 @@ class Api::V1::MessagesController < ApplicationController
   end
 
   def create
-    message = Message.new(message_params)
+    message = Message.new(user: current_user, content: params[:message][:content])
     if message.save
       render json: message, status: 200
     else
@@ -43,7 +43,7 @@ class Api::V1::MessagesController < ApplicationController
   end
 
   def message_params
-    params.permit(:username, :content)
+    params.permit(:content)
   end
 
 end
